@@ -1,0 +1,187 @@
+/* Ajustes basicos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #141414;
+    font-family: 'Jost', sans-serif;
+}
+
+div {
+    color: #fff;
+}
+
+.container {
+    padding: 10px;
+}
+
+/* Header */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+main {
+    padding-top: 20vh;
+    height: 100%;
+}
+
+.header-main-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 20px 2dvh 20px;
+    background-color: #141414;
+}
+
+.header-logo,
+.header-buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.header-btn {
+    cursor: pointer;
+    padding: 20px;
+}
+
+.header-btn:hover {
+    background-color: #fff;
+    color: #141414;
+    border-radius: 6px;
+}
+
+.top-text-desktop,
+.top-text-tablet {
+    font-weight: 800;
+}
+
+.section-title-first,
+.section-title-first-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+/* Ajustes de espacios */
+.section-title {
+    margin: 50px 0px 5px 0px;
+}
+
+/* Secciones */
+.top,
+.first,
+.second {
+    display: grid;
+    gap: 5px;
+    overflow: hidden;
+}
+
+.top {
+    /* creamos tantas columnas como quepan, su mínimo es 225px */
+    grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+}
+
+.first,
+.second {
+    /* creamos tantas columnas como quepan, su mínimo es 250px ; */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.first img,
+.second img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+}
+
+.top-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+}
+
+/* Efectos */
+.top-item img,
+.item img {
+    transition: transform 0.3s ease;
+    cursor: alias;
+}
+
+/* Efecto hover */
+.top-item img:hover,
+.item img:hover {
+    transform: scale(1.1);
+}
+
+/*  Ocultamos texto table en desktop */
+.top-text-tablet {
+    display: none;
+}
+
+@media (max-width: 1544px) {
+
+    /* 
+       A partir del 5.º hijo de .first y .second (cuando ya no caben en la primera fila y bajan),
+       hacemos que cada card ocupe 2 columnas (50% del ancho).
+    */
+    .first .item:nth-child(n+5),
+    .second .item:nth-child(n+5) {
+        grid-column: span 2;
+    }
+
+}
+
+/* Diseño Mobile/Tablet (hasta 1280px) */
+@media (max-width: 1280px) {
+
+    /* Ocultamos texto header en tablet */
+    .platform-title {
+        display: none;
+    }
+
+    .top-text-desktop {
+        display: none;
+    }
+
+    .top-text-tablet {
+        display: block;
+    }
+
+    /* Seleccionamos todos los hijos a partir del cuarto (incluyendo el cuarto ) */
+    .top .top-item:nth-child(n+4) {
+        display: none;
+    }
+
+}
+
+@media (max-width: 1034px) {
+
+    /* Reestablecemos que cada card ocupe 1 columna */
+    .first .item:nth-child(n+5),
+    .second .item:nth-child(n+5) {
+        grid-column: auto;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .top,
+    .first,
+    .second {
+        grid-template-columns: 1fr;
+    }
+
+    main {
+        padding-top: 15vh;
+    }
+}
